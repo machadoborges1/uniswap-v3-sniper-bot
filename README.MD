@@ -1,95 +1,93 @@
-# Bot de Sniper para Uniswap V3
+# Uniswap V3 Sniper Bot
 
-Este projeto é um bot de sniper em Node.js para Uniswap V3. Ele detecta novos pools de liquidez e executa compras instantâneas, com monitoramento básico de stop-loss e alertas via Telegram.
-
----
-
-## Funcionalidades Principais
-
-* **Detecção de Novos Pools:** Monitora a Uniswap V3 Factory em tempo real.
-* **Compra Automática:** Compra um token alvo em pools relevantes (geralmente WETH/TOKEN\_ALVO).
-* **Configuração Flexível:** Parâmetros configuráveis via `.env` (endereços, slippage, etc.).
-* **Monitoramento de Stop-Loss:** Alerta se o saldo do token comprado cair abaixo do limite (venda automática não implementada).
-* **Alertas via Telegram:** Notificações sobre status, compras e stop-loss.
-* **Reconexão Robusta:** Lida com desconexões de WebSocket.
+This project is a Node.js sniper bot for Uniswap V3. It detects new liquidity pools and executes instant purchases, with basic stop-loss monitoring and Telegram alerts.
 
 ---
 
-## Pré-requisitos
+## Key Features
 
-* **Node.js:** v16 ou superior.
-* **npm:** Gerenciador de pacotes.
-* **Provedor RPC/WebSocket:** Conta Infura ou similar (para `.env`).
-* **Carteira Ethereum:** Com ETH (gás) e WETH (compras).
-* **Telegram:** Bot Token e Chat ID (Opcional).
+*   **New Pool Detection:** Monitors the Uniswap V3 Factory in real-time.
+*   **Automatic Purchase:** Buys a target token in relevant pools (typically WETH/TARGET_TOKEN).
+*   **Flexible Configuration:** Configurable parameters via `.env` (addresses, slippage, etc.).
+*   **Stop-Loss Monitoring:** Alerts if the purchased token balance falls below the threshold (automatic selling not implemented).
+*   **Telegram Alerts:** Notifications about status, purchases, and stop-loss triggers.
+*   **Robust Reconnection:** Handles WebSocket disconnections gracefully.
 
 ---
 
-## Configuração
+## Prerequisites
 
-1.  **Clone o Repositório:**
+*   **Node.js:** v16 or higher.
+*   **npm:** Node Package Manager.
+*   **RPC/WebSocket Provider:** An Infura account or similar service (for `.env`).
+*   **Ethereum Wallet:** With ETH (for gas) and WETH (for purchases).
+*   **Telegram:** Bot Token and Chat ID (Optional).
+
+---
+
+## Configuration
+
+1.  **Clone the Repository:**
 
     ```bash
-    git clone [https://github.com/machadoborges1/uniswap-v3-sniper-bot.git](https://github.com/machadoborges1/uniswap-v3-sniper-bot.git)
+    git clone https://github.com/machadoborges1/uniswap-v3-sniper-bot.git
     cd uniswap-v3-sniper-bot
     ```
 
-2.  **Instale as Dependências:**
+2.  **Install Dependencies:**
 
     ```bash
     npm install
     ```
 
-3.  **Crie e Configure seu Arquivo `.env`:**
-    Use `.env.example` como guia.
+3.  **Create and Configure your `.env` File:**
+    Use the provided `.env.example` as a guide.
 
-4.  **Arquivos ABI:**
-    Os arquivos ABI necessários (`abi.router.json`, `abi.factory.json`, `abi.erc20.json`) estão na pasta `abi/`.
+4.  **ABI Files:**
+    The required ABI files (`abi.router.json`, `abi.factory.json`, `abi.erc20.json`) are located in the `abi/` folder.
 
 ---
 
-## Como Usar
+## Usage
 
-1.  **Inicie o Bot:**
+1.  **Start the Bot:**
 
     ```bash
     node src/index.js
     ```
 
-2.  O bot começará a monitorar a blockchain e registrará as atividades no console.
+2.  The bot will start monitoring the blockchain and log activities to the console.
 
 ---
 
-## Dependências
+## Dependencies
 
-* `dotenv`: Carrega variáveis de ambiente.
-* `ethers`: Interação com Ethereum.
-* `node-fetch`: Requisições HTTP (para Telegram).
-* `@uniswap/sdk-core`, `@uniswap/v3-sdk`, `@uniswap/v3-periphery`: Ferramentas Uniswap V3.
-
----
-
-## Licença
-
-Este projeto é licenciado sob a [Licença MIT](LICENSE).
+*   `dotenv`: Loads environment variables.
+*   `ethers`: Interacts with the Ethereum blockchain.
+*   `node-fetch`: Makes HTTP requests (for Telegram).
+*   `@uniswap/sdk-core`, `@uniswap/v3-sdk`, `@uniswap/v3-periphery`: Uniswap V3 SDK tools.
 
 ---
 
-## Contribuição
+## License
 
-Contribuições são bem-vindas!.
+This project is licensed under the [MIT License](LICENSE).
+
+---
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit issues and pull requests.
 
 ---
 
-## Aviso Importante
+## Important Disclaimer
 
-**⚠️ DISCLAIMER DE RISCO:** Este bot opera em um cenário de alta volatilidade e risco extremo, podendo resultar em **perda total dos fundos**.
+**⚠️ RISK DISCLAIMER:** This bot operates in a highly volatile and extremely risky environment, which may result in **total loss of funds**.
 
-* **Não é aconselhamento financeiro.** Apenas para fins educacionais e de demonstração.
-* **Riscos da Rede:** Congestionamento, picos de gás e reorgs podem afetar transações.
-* **Rug Pulls:** Tokens recém-lançados são suscetíveis a golpes.
-* **Slippage:** A variação de preço pode exceder o limite em alta volatilidade.
+*   **This is not financial advice.** For educational and demonstration purposes only.
+*   **Network Risks:** Network congestion, gas spikes, and chain reorganizations (reorgs) can affect transactions.
+*   **Rug Pulls:** Newly launched tokens are highly susceptible to scams.
+*   **Slippage:** Price volatility may cause execution beyond your set slippage tolerance.
 
-**USE ESTE BOT POR SUA CONTA E RISCO.** Os desenvolvedores não se responsabilizam por quaisquer perdas financeiras.
-
----
+**USE THIS BOT AT YOUR OWN RISK.** The developers are not responsible for any financial losses incurred.
